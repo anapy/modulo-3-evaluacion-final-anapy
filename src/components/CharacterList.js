@@ -10,6 +10,7 @@ const CharacterList = props => {
         imgURL={character.image}
         name={character.name}
         species={character.species}
+        handleDetailsClick={props.handleDetailsClick}
         />
       </li>
     )
@@ -24,7 +25,6 @@ const CharacterList = props => {
     </div>
   )
 
-  console.log(errorInfo);
   return (
     <ul className="characterList">
     {characters.length !== 0 ? characters : errorInfo}

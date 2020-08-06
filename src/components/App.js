@@ -12,6 +12,7 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
+  const [detailCharacter, setDetailCharacter] = useState('');
 
   const handleSearch = (searchItem) => {
     console.log(searchItem);
@@ -31,6 +32,12 @@ const App = () => {
     })
   }
 
+  const handleDetailsClick = id => {
+    return characters.filter(character => {
+      const name = character.name.toLowerCase();
+      return name.includes(id);
+  })
+}
   return (
     <div>
       <header>
@@ -40,9 +47,11 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
-            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter}/>
+            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} handleDetailsClick={handleDetailsClick}/>
           </Route>
-          <Route path="/details" component={CharacterDetails} />
+          <Route path="/details">
+            <CharacterDetails detailCharacter={detailCharacter} characters={handleDetailsClick()}/>
+          </Route>
         </Switch>
       </main>
     </div>
