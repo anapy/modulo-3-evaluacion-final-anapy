@@ -28,15 +28,13 @@ const App = () => {
     })
   }
 
-  console.log(filterCharacters());
-
   return (
     <div>
       <header>
         <div className="headerLogo__container"><img src={logo} alt="Rick and Morty Logo" className="headerLogo"></img></div>
       </header>
       <main className="App">
-        <Filters handleSearch={handleSearch}/>
+        <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
         <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter}/>
       </main>
     </div>

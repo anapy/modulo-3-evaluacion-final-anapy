@@ -10,7 +10,7 @@ const Filters = props => {
   <div>
     <form>
       <label htmlFor="characterSearh">
-        <input id="characterSearh" name="characterSearh" type="text" onChange={handleSearch}></input>
+        <input id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch}></input>
       </label>
     </form>
   </div>
