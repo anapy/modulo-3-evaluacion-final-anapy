@@ -1,10 +1,12 @@
 import React from 'react';
 
-const CharacterCard = () => {
+const CharacterCard = props => {
   return (
-    <div>
-      CharacterCard
-    </div>
+    <article className="character"> 
+    <img src={props.imgURL} className="card__img" alt={props.name} />
+    <h3 className="card__title">{props.name}</h3>
+    <p className="card__description">{props.species} </p>
+    </article>
   );
 }
 
