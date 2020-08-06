@@ -1,9 +1,10 @@
 import React from 'react';
+import '../stylesheets/filters.scss';
 
 const Filters = props => {
-
   const handleSearch = (ev) => {
-    props.handleSearch(ev.currentTarget.value);
+    const searchCharacter = ev.currentTarget.value.toLowerCase()
+    props.handleSearch(searchCharacter);
   }
   return (
   <div>

@@ -4,7 +4,6 @@ import '../stylesheets/characterList.scss';
 
 const CharacterList = props => {
   const characters = props.characters.map(character =>  {
-    //console.log(character)
     return (
       <li className="character" key={character.id}>
         <CharacterCard

@@ -21,6 +21,15 @@ const App = () => {
     });
   }, []);
 
+  const filterCharacters = () => {
+    return characters.filter(character => {
+      const name = character.name.toLowerCase();
+      return name.includes(searchCharacter);
+    })
+  }
+
+  console.log(filterCharacters());
+
   return (
     <div>
       <header>
@@ -28,7 +37,7 @@ const App = () => {
       </header>
       <main className="App">
         <Filters handleSearch={handleSearch}/>
-        <CharacterList characters={characters} searchCharacter={searchCharacter}/>
+        <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter}/>
       </main>
     </div>
 
