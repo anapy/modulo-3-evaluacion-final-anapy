@@ -1,11 +1,13 @@
 import React from 'react';
+import '../stylesheets/characterCard.scss';
+
 
 const CharacterCard = props => {
   return (
-    <article className="character"> 
-    <img src={props.imgURL} className="card__img" alt={props.name} />
-    <h3 className="card__title">{props.name}</h3>
-    <p className="card__description">{props.species} </p>
+    <article className="character__container"> 
+      <img src={props.imgURL} className="character__img" alt={props.name} width="180px"/>
+      <h3 className="character__name">{props.name}</h3>
+      <p className="character__species">{props.species} </p>
     </article>
   );
 }

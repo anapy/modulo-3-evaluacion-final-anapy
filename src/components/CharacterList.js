@@ -1,12 +1,12 @@
 import React from 'react';
 import CharacterCard from './CharacterCard';
-
+import '../stylesheets/characterList.scss';
 
 const CharacterList = props => {
   const characters = props.characters.map(character =>  {
     //console.log(character)
     return (
-      <li>
+      <li className="character" key={character.id}>
         <CharacterCard
         imgURL={character.image}
         name={character.name}
@@ -17,13 +17,9 @@ const CharacterList = props => {
   })
 
   return (
-    <div>
-      <ul className="">
-      {characters}
-      </ul>
-      CharacterList
-      <CharacterCard />
-    </div>
+    <ul className="characterList">
+    {characters}
+    </ul>
   );
 }
 

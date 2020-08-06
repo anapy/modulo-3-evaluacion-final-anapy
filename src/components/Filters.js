@@ -1,9 +1,17 @@
 import React from 'react';
 
-const Filters = () => {
+const Filters = props => {
+
+  const handleSearch = (ev) => {
+    props.handleSearch(ev.currentTarget.value);
+  }
   return (
   <div>
-    Filters
+    <form>
+      <label htmlFor="characterSearh">
+        <input id="characterSearh" name="characterSearh" type="text" onChange={handleSearch}></input>
+      </label>
+    </form>
   </div>
   );
 }
