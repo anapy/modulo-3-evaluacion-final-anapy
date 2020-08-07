@@ -12,7 +12,6 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
-  const [detailCharacter, setDetailCharacter] = useState('');
 
   const handleSearch = (searchItem) => {
     console.log(searchItem);
@@ -32,12 +31,30 @@ const App = () => {
     })
   }
 
-  const handleDetailsClick = id => {
-    return characters.filter(character => {
-      const name = character.name.toLowerCase();
-      return name.includes(id);
-  })
-}
+  const handleDetailsClick = props => {
+    const routeCharacterName = props.match().input.toLowerCase().replace(' ', '');
+    const characterClicked = characters.find(character => {
+      const name = character.name.toLowerCase().replace(' ', '');
+      return name.includes(routeCharacterName);
+    })
+    console.log(routeCharacterName);
+    if(characterClicked) {
+      return (
+      <CharacterDetails className="character" key={characterClicked.id}
+        name={characterClicked.name}
+        species={characterClicked.species}
+        planet={characterClicked.origin.name}
+        episode={characterClicked.episode.lenght}
+        status={characterClicked.status}
+        />
+      );
+    } else {
+      return (
+      <li>No hay ningún personaje que coincida con la búsqueda</li>
+      )
+    }
+  }
+
   return (
     <div>
       <header>
@@ -49,14 +66,10 @@ const App = () => {
             <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
             <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} handleDetailsClick={handleDetailsClick}/>
           </Route>
-          <Route path="/details">
-            <CharacterDetails detailCharacter={detailCharacter} characters={handleDetailsClick()}/>
-          </Route>
+          <Route path="/details/:characterName" render={handleDetailsClick} />
         </Switch>
       </main>
     </div>
-
   );
 }
-
 export default App;
