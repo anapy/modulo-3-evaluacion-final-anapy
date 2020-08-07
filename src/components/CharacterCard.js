@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 
 const CharacterCard = props => {
+  console.log(props);
   const handleDetailsClick = (ev) => {
     props.handleDetailsClick(ev.currentTarget.id);
   }

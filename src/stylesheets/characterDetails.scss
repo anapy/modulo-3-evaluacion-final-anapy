@@ -39,3 +39,15 @@
   color: black;
 }
 
+
+.images_container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  .rocket_left {
+    transform: rotate(225deg);
+  }
+  .rocket_right {
+    transform: rotate(45deg);
+  }
+}
