@@ -41,23 +41,21 @@ const App = () => {
   )
 
   const handleDetailsClick = props => {
-    const routeCharacterName  = '';
     if(props.match.params) {
       const characterClicked = characters.find(character => {
         const routeCharacterName = props.match.params.characterName;
         const name = character.name.toLowerCase().replace(' ', '');
         return name.includes(routeCharacterName);
       })
-      console.log(routeCharacterName);
       if(characterClicked) {
         return (
         <CharacterDetails className="character" key={characterClicked.id}
           imgURL={characterClicked.image}
           name={characterClicked.name}
-          species={characterClicked.species}
+          alien={characterClicked.species === 'Alien' ? true : false}
           planet={characterClicked.origin.name}
           episodes={characterClicked.episode.length}
-          status={characterClicked.status}
+          status={characterClicked.status === 'Alive' ? true : false}
           />
         );
       } else {

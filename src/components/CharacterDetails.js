@@ -1,24 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../stylesheets/characterDetails.scss';
-
+import PropTypes from 'prop-types';
+import alive from  '../images/alive.svg';
+import dead from  '../images/dead.svg';
+import alien from  '../images/alien.svg';
+import human from  '../images/human.svg';
 
 const CharacterDetails = props => {
-  console.log(props)
   return (
-      <article className="character_details">
-        <Link to ="/" style={{ textDecoration: 'none', fontFamily:'inherit', color:'inherit' }}>
-        <p>Return</p>
-        </Link>
-        <img src={props.imgURL} className="card__img" alt={props.name} />
-        <h3 className="card__title">{props.name}</h3>
-        <p className="card__description">{props.species}</p>
-        <p className="card__description">{props.planet}</p>
-        <p className="card__description">{props.episodes}</p>
-        <p className="card__description">{props.status}</p>
+    <div className="detail__container">
+      <article className="character__detail">
+          <div className="return_btn_container">
+            <Link to ="/" style={{ textDecoration: 'none', fontFamily:'inherit', color:'inherit' }}>
+            <span className="return_btn">Return</span>
+            </Link>
+          </div>
+          <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
+          <h3 className="detail_data character__detail__name">{props.name}</h3>
+          <p className="detail_data character__detail__planet"><b>Planet</b>: {props.planet}</p>
+          <p className="detail_data character__detail__episodes"><b>Episodes</b>: {props.episodes} </p>
+          <p className="detail_data character__detail__species"><b>Specie:</b>
+            <img className="character__detail__icon" src={`${props.alien ? alien : human }`} alt="status icon" height="30px"/>
+            {props.status}
+          </p>
+          <p className="detail_data character__detail__status"><b>Status:</b>
+            <img className="character__detail__icon" src={`${props.status ? alive : dead }`} alt="status icon" height="30px"/>
+          </p>
       </article>
- 
+    </div>
   )
+}
+CharacterDetails.propTypes = {
+  name: PropTypes.string,
+  imgURL: PropTypes.string,
+  human: PropTypes.bool,
+  planet: PropTypes.string,
+  episodes: PropTypes.number,
+  status: PropTypes.bool,
 }
 
 export default CharacterDetails;

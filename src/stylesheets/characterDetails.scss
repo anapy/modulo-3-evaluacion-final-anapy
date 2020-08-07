@@ -1,7 +1,41 @@
-.character_details {
+* {
+  box-sizing: border-box;
+}
+
+.detail__container {
+  display: flex;
+  justify-content: center;
+}
+.character__detail {
   background-color: rgba(77, 167, 170, 0.7);
+  border: 3px solid lightgreen;
+  border-radius: 20px;
+  width: 700px;
+  padding: 20px;
+  position: relative;
+  font-size: 20px;
+  .return_btn {
+    border: 2px solid lightgreen;
+    padding: 5px;
+    border-radius: 20px;
+  }
+  .return_btn_container {
+    position: absolute;
+    padding: 5px;
+    margin: 15px;
+    right: 20px;
+    top: 0;
+  }
+  &__icon {
+    transform: translate(10px, 10px);
+  }
+}
+
+.detail_data {
+  padding: 5px;
 }
 
 .fa-times {
   color: black;
 }
+
