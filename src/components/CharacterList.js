@@ -13,6 +13,7 @@ const CharacterList = props => {
         species={character.species}
         renderDetailsClick={props.renderDetailsClick}
         errorInfo={props.errorInfo}
+        searchNewIndex={props.searchNewIndex}
         />
       </li>
     )

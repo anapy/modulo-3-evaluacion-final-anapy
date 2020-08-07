@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 
 const CharacterCard = props => {
   const renderDetailsClick = (ev) => {
-    props.renderDetailsClick(ev.currentTarget.id);
+    console.log(ev.currentTarget)
+    const id = ev.currentTarget.id;
+    props.renderDetailsClick(id);
+    props.searchNewIndex(id);
   }
 
   return (

@@ -15,7 +15,23 @@ const CharacterDetails = props => {
     console.log(ev.currentTarget);
   }
 
-  const index = 2;
+  const indexUp = () => {
+    console.log(props.characters.length);
+    if((props.charIndex !== 0) && (props.charIndex!== props.characters.length)) {
+      return props.charIndex;
+    } else if () {
+
+    }
+    // props.characters[props.charIndex - 1].name.toLowerCase().replace(' ', '')
+  }
+
+  const indexDown = () => {
+    if(props.charIndex !== 0) {
+      return props.charIndex;
+    } else if {
+      
+    }
+  }
 
   return (
     <div className="detail__container">
@@ -26,11 +42,11 @@ const CharacterDetails = props => {
             </Link>
           </div>
           <div className="images_container">
-            <Link to={`${props.characters[index + 1].name.toLowerCase().replace(' ', '')}`} >
+            <Link to={`${props.characters[props.charIndex - 1].name.toLowerCase().replace(' ', '')}`} >
               <img src={rocket} alt="rocket" height="60px" className="rocket_left" onClick={handleClick}/>
               </Link>
             <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
-            <Link to={"/"}>
+            <Link to={`${props.characters[props.charIndex + 1].name.toLowerCase().replace(' ', '')}`}>
             <img src={rocket} alt="rocket" height="60px" className="rocket_right"/>
             </Link>
           </div>

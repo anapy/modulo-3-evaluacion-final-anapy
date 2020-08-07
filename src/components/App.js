@@ -10,7 +10,8 @@ import { Route, Switch } from 'react-router-dom';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
-  const [searchCharacter , setSearch] = useState('');
+  const [searchCharacter, setSearch] = useState('');
+  const [charIndex, setIndex] = useState(0);
 
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
@@ -43,8 +44,15 @@ const App = () => {
     </div>
   )
 
+  const searchNewIndex = id => {
+    const name = id.toLowerCase().replace(' ', '');
+    const namesList = [];
+    filterCharacters().map(character => namesList.push(character.name.toLowerCase().replace(' ', '')));
+    const isSame = (element) => element === name;
+    setIndex(namesList.findIndex(isSame));
+  }
+
   const renderDetailsClick = props => {
-    console.log(props)
     if(props.match.params) {
       const characterClicked = characters.find(character => {
         const routeCharacterName = props.match.params.characterName;
@@ -62,6 +70,7 @@ const App = () => {
           episodes={characterClicked.episode.length}
           status={characterClicked.status === 'Alive' ? true : false}
           characters={filterCharacters()}
+          charIndex={charIndex}
           />
         );
       } else {
@@ -82,9 +91,14 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
-            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} renderDetailsClick={renderDetailsClick} errorInfo={errorInfo}/>
+            <CharacterList 
+            characters={filterCharacters()}
+            searchCharacter={searchCharacter}
+            renderDetailsClick={renderDetailsClick}
+            errorInfo={errorInfo}
+            searchNewIndex={searchNewIndex}/>
           </Route>
-          <Route path="/details/:characterName" render={renderDetailsClick} />
+          <Route path="/details/:characterName" render={renderDetailsClick}  />
         </Switch>
       </main>
     </div>
