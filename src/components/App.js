@@ -8,7 +8,6 @@ import getApiData from '../services/api';
 import logo from  '../images/Rick_and_Morty.png';
 import { Route, Switch } from 'react-router-dom';
 
-
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
@@ -44,7 +43,8 @@ const App = () => {
     </div>
   )
 
-  const handleDetailsClick = props => {
+  const renderDetailsClick = props => {
+    console.log(props)
     if(props.match.params) {
       const characterClicked = characters.find(character => {
         const routeCharacterName = props.match.params.characterName;
@@ -53,13 +53,15 @@ const App = () => {
       })
       if(characterClicked) {
         return (
-        <CharacterDetails className="character" key={characterClicked.id}
+        <CharacterDetails className="character"
+          key={characterClicked.id}
           imgURL={characterClicked.image}
           name={characterClicked.name}
           alien={characterClicked.species === 'Alien' ? true : false}
           planet={characterClicked.origin.name}
           episodes={characterClicked.episode.length}
           status={characterClicked.status === 'Alive' ? true : false}
+          characters={filterCharacters()}
           />
         );
       } else {
@@ -71,7 +73,6 @@ const App = () => {
       }
     }
   }
-
   return (
     <div>
       <header>
@@ -81,9 +82,9 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
-            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} handleDetailsClick={handleDetailsClick} errorInfo={errorInfo}/>
+            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} renderDetailsClick={renderDetailsClick} errorInfo={errorInfo}/>
           </Route>
-          <Route path="/details/:characterName" render={handleDetailsClick} />
+          <Route path="/details/:characterName" render={renderDetailsClick} />
         </Switch>
       </main>
     </div>

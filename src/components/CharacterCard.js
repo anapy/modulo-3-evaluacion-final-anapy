@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 
 
 const CharacterCard = props => {
-  console.log(props);
-  const handleDetailsClick = (ev) => {
-    props.handleDetailsClick(ev.currentTarget.id);
+  const renderDetailsClick = (ev) => {
+    props.renderDetailsClick(ev.currentTarget.id);
   }
 
   return (
-    <article className="character__container" id={props.name} onClick={handleDetailsClick}>
+    <article className="character__container" id={props.name} onClick={renderDetailsClick}>
       <Link to={`/details/${props.name.toLowerCase().replace(' ', '')}`} className="details_link">
       <img src={props.imgURL} className="character__img" alt={props.name} width="174px"/>
       </Link>

@@ -10,6 +10,13 @@ import rocket from  '../images/rocket.svg';
 
 
 const CharacterDetails = props => {
+  console.log(props);
+  const handleClick = ev => {
+    console.log(ev.currentTarget);
+  }
+
+  const index = 2;
+
   return (
     <div className="detail__container">
       <article className="character__detail">
@@ -19,9 +26,13 @@ const CharacterDetails = props => {
             </Link>
           </div>
           <div className="images_container">
-            <img src={rocket} alt="rocket" height="60px" className="rocket_left"/>
+            <Link to={`${props.characters[index + 1].name.toLowerCase().replace(' ', '')}`} >
+              <img src={rocket} alt="rocket" height="60px" className="rocket_left" onClick={handleClick}/>
+              </Link>
             <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
+            <Link to={"/"}>
             <img src={rocket} alt="rocket" height="60px" className="rocket_right"/>
+            </Link>
           </div>
           <h3 className="detail_data character__detail__name">{props.name}</h3>
           <p className="detail_data character__detail__planet"><b>Planet</b>: {props.planet}</p>

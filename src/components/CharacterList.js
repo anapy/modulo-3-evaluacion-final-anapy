@@ -11,7 +11,7 @@ const CharacterList = props => {
         imgURL={character.image}
         name={character.name}
         species={character.species}
-        handleDetailsClick={props.handleDetailsClick}
+        renderDetailsClick={props.renderDetailsClick}
         errorInfo={props.errorInfo}
         />
       </li>
