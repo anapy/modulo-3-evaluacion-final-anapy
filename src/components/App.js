@@ -14,7 +14,6 @@ const App = () => {
   const [searchCharacter , setSearch] = useState('');
 
   const handleSearch = (searchItem) => {
-    console.log(searchItem);
     setSearch(searchItem);
   }
 
@@ -25,10 +24,15 @@ const App = () => {
   }, []);
 
   const filterCharacters = () => {
+    sortedCharacters();
     return characters.filter(character => {
       const name = character.name.toLowerCase();
       return name.includes(searchCharacter);
     })
+  }
+
+  const sortedCharacters = () => {
+    characters.sort((a, b) => (a.name > b.name) ? 1 : -1);
   }
 
   const errorInfo = (
@@ -63,10 +67,9 @@ const App = () => {
           <div>
             {errorInfo}
           </div>
-          )
+        )
       }
-
-  }
+    }
   }
 
   return (
