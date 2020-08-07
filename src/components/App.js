@@ -12,6 +12,8 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
+  const [detailedCharacter , setDetailed] = useState('');
+
 
   const handleSearch = (searchItem) => {
     console.log(searchItem);
@@ -32,8 +34,9 @@ const App = () => {
   }
 
   const handleDetailsClick = props => {
-    const routeCharacterName = props.match().input.toLowerCase().replace(' ', '');
+    const routeCharacterName  = '';
     const characterClicked = characters.find(character => {
+      const routeCharacterName = props.match.params.characterName;
       const name = character.name.toLowerCase().replace(' ', '');
       return name.includes(routeCharacterName);
     })
@@ -41,10 +44,11 @@ const App = () => {
     if(characterClicked) {
       return (
       <CharacterDetails className="character" key={characterClicked.id}
+        imgURL={characterClicked.image}
         name={characterClicked.name}
         species={characterClicked.species}
         planet={characterClicked.origin.name}
-        episode={characterClicked.episode.lenght}
+        episodes={characterClicked.episode.length}
         status={characterClicked.status}
         />
       );
