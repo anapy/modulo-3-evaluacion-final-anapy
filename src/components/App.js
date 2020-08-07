@@ -12,8 +12,6 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
-  const [detailedCharacter , setDetailed] = useState('');
-
 
   const handleSearch = (searchItem) => {
     console.log(searchItem);
@@ -33,30 +31,44 @@ const App = () => {
     })
   }
 
+  const errorInfo = (
+    <div>
+      <h4 className="errorText">No hay ningún personaje que coincida con la búsqueda<span className="errorText__word">"{searchCharacter}"</span></h4>
+      <div>
+        <iframe title="sad" src="https://giphy.com/embed/RH1IFq2GT0Oau8NRWX" width="200px" frameBorder="0" allowFullScreen></iframe>
+      </div>
+    </div>
+  )
+
   const handleDetailsClick = props => {
     const routeCharacterName  = '';
-    const characterClicked = characters.find(character => {
-      const routeCharacterName = props.match.params.characterName;
-      const name = character.name.toLowerCase().replace(' ', '');
-      return name.includes(routeCharacterName);
-    })
-    console.log(routeCharacterName);
-    if(characterClicked) {
-      return (
-      <CharacterDetails className="character" key={characterClicked.id}
-        imgURL={characterClicked.image}
-        name={characterClicked.name}
-        species={characterClicked.species}
-        planet={characterClicked.origin.name}
-        episodes={characterClicked.episode.length}
-        status={characterClicked.status}
-        />
-      );
-    } else {
-      return (
-      <li>No hay ningún personaje que coincida con la búsqueda</li>
-      )
-    }
+    if(props.match.params) {
+      const characterClicked = characters.find(character => {
+        const routeCharacterName = props.match.params.characterName;
+        const name = character.name.toLowerCase().replace(' ', '');
+        return name.includes(routeCharacterName);
+      })
+      console.log(routeCharacterName);
+      if(characterClicked) {
+        return (
+        <CharacterDetails className="character" key={characterClicked.id}
+          imgURL={characterClicked.image}
+          name={characterClicked.name}
+          species={characterClicked.species}
+          planet={characterClicked.origin.name}
+          episodes={characterClicked.episode.length}
+          status={characterClicked.status}
+          />
+        );
+      } else {
+        return (
+          <div>
+            {errorInfo}
+          </div>
+          )
+      }
+
+  }
   }
 
   return (
@@ -68,7 +80,7 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
-            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} handleDetailsClick={handleDetailsClick}/>
+            <CharacterList characters={filterCharacters()} searchCharacter={searchCharacter} handleDetailsClick={handleDetailsClick} errorInfo={errorInfo}/>
           </Route>
           <Route path="/details/:characterName" render={handleDetailsClick} />
         </Switch>

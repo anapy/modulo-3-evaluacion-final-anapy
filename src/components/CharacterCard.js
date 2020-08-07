@@ -7,7 +7,6 @@ import { Link} from 'react-router-dom';
 const CharacterCard = props => {
   const handleDetailsClick = (ev) => {
     props.handleDetailsClick(ev.currentTarget.id);
-
   }
 
   return (

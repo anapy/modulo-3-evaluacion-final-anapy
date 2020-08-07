@@ -7,10 +7,12 @@ const CharacterList = props => {
     return (
       <li className="character" key={character.id}>
         <CharacterCard
+        id={character.id}
         imgURL={character.image}
         name={character.name}
         species={character.species}
         handleDetailsClick={props.handleDetailsClick}
+        errorInfo={props.errorInfo}
         />
       </li>
     )
