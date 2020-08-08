@@ -3,13 +3,11 @@
 @import "core/reset";
 @import "core/functions";
 
-
 .App {
   text-align: center;
   padding: 20px;
   color: $color-light;
 }
-
 
 .headerLogo {
   height: 75px;
@@ -45,7 +43,6 @@
   background-color: $color-blue;
   color: $color-light;
   border: 2px solid $color-blue;
-
 }
 
 @keyframes blink {

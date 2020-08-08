@@ -19,7 +19,7 @@ const Filters = props => {
   <div>
     <form>
       <label htmlFor="characterSearh">
-        <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler} ></input>
+        <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler}></input>
       </label>
     </form>
   </div>

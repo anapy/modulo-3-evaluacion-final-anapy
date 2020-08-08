@@ -8,7 +8,6 @@ import alien from  '../images/alien.svg';
 import human from  '../images/human.svg';
 import rocket from  '../images/rocket.svg';
 
-
 const CharacterDetails = props => {
   return (
     <div className="detail__container">
