@@ -9,7 +9,6 @@ const CharacterCard = props => {
     console.log(ev.currentTarget)
     const id = ev.currentTarget.id;
     props.renderDetailsClick(id);
-    props.searchNewIndex(id);
   }
 
   return (

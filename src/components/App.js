@@ -10,7 +10,6 @@ import { Route, Switch, Link } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter, setSearch] = useState('');
-  const [charIndex, setCharIndex] = useState(0);
 
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
@@ -64,16 +63,6 @@ const App = () => {
     </div>
   )
 
-  const searchNewIndex = id => {
-    console.log(id);
-    const name = id.toLowerCase().replace(' ', '');
-    const namesList = [];
-    filterCharacters().map(character => namesList.push(character.name.toLowerCase().replace(' ', '')));
-    const isSame = (element) => element === name;
-    console.log(namesList.findIndex(isSame));
-    setCharIndex(namesList.findIndex(isSame));
-  }
-
   const fixName = name => {
     if(name !== undefined) {
       name = name.toLowerCase().replace(' ', '');
@@ -110,7 +99,6 @@ const App = () => {
           episodes={characterClicked.episode.length}
           status={characterClicked.status === 'Alive' ? true : false}
           characters={filterCharacters()}
-          charIndex={charIndex}
           previousCharacter={fixName(previousCharacter)}
           nextCharacter={fixName(nextCharacter)}
           />
@@ -133,13 +121,13 @@ const App = () => {
       <main className="App">
         <Switch>
           <Route exact path="/">
-            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter} searchNewIndex={searchNewIndex}/>
+            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter} />
             <CharacterList 
             characters={filterCharacters()}
             searchCharacter={searchCharacter}
             renderDetailsClick={renderDetailsClick}
             errorInfo={errorInfo}
-            searchNewIndex={searchNewIndex}/>
+            />
           </Route>
           <Route path="/details/:characterName" render={renderDetailsClick}  />
         </Switch>
