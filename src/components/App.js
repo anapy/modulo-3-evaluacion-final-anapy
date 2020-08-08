@@ -11,7 +11,7 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter, setSearch] = useState('');
-  const [charIndex, setIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
 
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
@@ -45,11 +45,18 @@ const App = () => {
   )
 
   const searchNewIndex = id => {
+    console.log(id);
     const name = id.toLowerCase().replace(' ', '');
     const namesList = [];
     filterCharacters().map(character => namesList.push(character.name.toLowerCase().replace(' ', '')));
     const isSame = (element) => element === name;
-    setIndex(namesList.findIndex(isSame));
+    console.log(namesList.findIndex(isSame));
+    setCharIndex(namesList.findIndex(isSame));
+  }
+
+  const updateIndex = number => {
+    console.log('updating')
+    setCharIndex(number);
   }
 
   const renderDetailsClick = props => {
@@ -71,7 +78,7 @@ const App = () => {
           status={characterClicked.status === 'Alive' ? true : false}
           characters={filterCharacters()}
           charIndex={charIndex}
-          searchNewIndex={searchNewIndex}
+          updateIndex={updateIndex}
           />
         );
       } else {
@@ -83,6 +90,8 @@ const App = () => {
       }
     }
   }
+
+  console.log(charIndex)
   return (
     <div>
       <header>

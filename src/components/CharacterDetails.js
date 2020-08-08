@@ -8,7 +8,6 @@ import alien from  '../images/alien.svg';
 import human from  '../images/human.svg';
 import rocket from  '../images/rocket.svg';
 
-
 const CharacterDetails = props => {
   console.log(props);
   const handleClick = ev => {
@@ -16,25 +15,25 @@ const CharacterDetails = props => {
   }
 
   const indexUp = () => {
-    console.log(props.characters.length);
     let index = 0;
-    if(parseInt(props.charIndex) + 1 !== props.characters.length) {
-      index = props.charIndex;
-    } else if (props.charIndex !== props.characters.length) {
+    if(parseInt(props.charIndex) + 1 < props.characters.length) {
+      index = props.charIndex + 1;
+    } else if (props.charIndex >= props.characters.length) {
       index = 0;
     }
     return index;
-    // props.characters[props.charIndex - 1].name.toLowerCase().replace(' ', '')
   }
 
   const indexDown = () => {
+    let index = 0;
     if(props.charIndex !== 0) {
-      return props.charIndex;
+      index = props.charIndex - 1;
     } else if ((props.charIndex === 0)){
-      return props.characters.length;
+      index =  props.characters.length - 1;
     }
+    return index;
   }
-
+  
   return (
     <div className="detail__container">
       <article className="character__detail">
@@ -44,11 +43,11 @@ const CharacterDetails = props => {
             </Link>
           </div>
           <div className="images_container">
-            <Link to={`${props.characters[indexDown() - 1].name.toLowerCase().replace(' ', '')}`} >
+            <Link to={`${props.characters[indexDown()].name.toLowerCase().replace(' ', '')}`} >
               <img src={rocket} alt="rocket" height="60px" className="rocket_left" onClick={handleClick}/>
               </Link>
             <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
-            <Link to={`${props.characters[indexUp() + 1].name.toLowerCase().replace(' ', '')}`}>
+            <Link to={`${props.characters[indexUp()].name.toLowerCase().replace(' ', '')}`} >
             <img src={rocket} alt="rocket" height="60px" className="rocket_right"/>
             </Link>
           </div>
