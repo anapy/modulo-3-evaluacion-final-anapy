@@ -15,6 +15,9 @@
   padding: 20px;
   position: relative;
   font-size: rem(20);
+  @include tablet {
+    font-size: rem(24);
+  }
   .return_btn {
     border: 2px solid $color-green;
     padding: 5px;
