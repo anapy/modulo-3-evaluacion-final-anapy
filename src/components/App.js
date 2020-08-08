@@ -71,6 +71,7 @@ const App = () => {
           status={characterClicked.status === 'Alive' ? true : false}
           characters={filterCharacters()}
           charIndex={charIndex}
+          searchNewIndex={searchNewIndex}
           />
         );
       } else {
@@ -90,7 +91,7 @@ const App = () => {
       <main className="App">
         <Switch>
           <Route exact path="/">
-            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter}/>
+            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter} searchNewIndex={searchNewIndex}/>
             <CharacterList 
             characters={filterCharacters()}
             searchCharacter={searchCharacter}

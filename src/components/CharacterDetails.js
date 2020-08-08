@@ -17,11 +17,13 @@ const CharacterDetails = props => {
 
   const indexUp = () => {
     console.log(props.characters.length);
-    if((props.charIndex !== 0) && (props.charIndex!== props.characters.length)) {
-      return props.charIndex;
-    // } else if () {
-
+    let index = 0;
+    if(parseInt(props.charIndex) + 1 !== props.characters.length) {
+      index = props.charIndex;
+    } else if (props.charIndex !== props.characters.length) {
+      index = 0;
     }
+    return index;
     // props.characters[props.charIndex - 1].name.toLowerCase().replace(' ', '')
   }
 
@@ -29,7 +31,6 @@ const CharacterDetails = props => {
     if(props.charIndex !== 0) {
       return props.charIndex;
     } else if ((props.charIndex === 0)){
-      console.log(props.characters.length);
       return props.characters.length;
     }
   }
@@ -43,11 +44,11 @@ const CharacterDetails = props => {
             </Link>
           </div>
           <div className="images_container">
-            <Link to={`${props.characters[props.charIndex - 1].name.toLowerCase().replace(' ', '')}`} >
+            <Link to={`${props.characters[indexDown() - 1].name.toLowerCase().replace(' ', '')}`} >
               <img src={rocket} alt="rocket" height="60px" className="rocket_left" onClick={handleClick}/>
               </Link>
             <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
-            <Link to={`${props.characters[props.charIndex + 1].name.toLowerCase().replace(' ', '')}`}>
+            <Link to={`${props.characters[indexUp() + 1].name.toLowerCase().replace(' ', '')}`}>
             <img src={rocket} alt="rocket" height="60px" className="rocket_right"/>
             </Link>
           </div>
