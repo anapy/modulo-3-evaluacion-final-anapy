@@ -24,8 +24,10 @@
     border-radius: 20px;
   }
   .return_btn:hover {
-    background-color: $color-green;
-    color: $color-dark;
+    background-color: $color-blue;
+    color: $color-light;
+    border: 2px solid $color-blue;
+
   }
   .return_btn_container {
     position: absolute;

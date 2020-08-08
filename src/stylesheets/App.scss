@@ -15,11 +15,41 @@
   height: 75px;
   @include tablet {
     height: 202px;
-
   }
 }
 
 .headerLogo__container {
   display: flex;
   justify-content: center;
+}
+
+.return_btn_container {
+  padding: 5px;
+  margin: 15px;
+  top: 0;
+  right: -15px;
+  font-size: rem(30);
+  @include tablet {
+    right: 20px;
+  }
+}
+.return_btn {
+  border: 2px solid $color-green;
+  background-color: $color-green;
+  padding: 5px;
+  border-radius: 20px;
+  animation: blink 2s linear infinite;
+  color: $color-dark;
+}
+.return_btn:hover {
+  background-color: $color-blue;
+  color: $color-light;
+  border: 2px solid $color-blue;
+
+}
+
+@keyframes blink {
+  0% {opacity: 1.0; }
+  50% {opacity: 0.7; }
+  100% {opacity: 1.0; }
 }
