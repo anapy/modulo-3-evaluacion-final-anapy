@@ -1,9 +1,13 @@
-.character {
+@import "core/variables";
+@import "core/mixins";
+@import "core/functions";
 
+
+.character {
   &__container {
     margin: 20px;
     width: 180px;
-    background-color: rgb(77, 167, 170);
-    border: 3px solid rgb(77, 167, 170);
+    background-color: $color-blue;
+    border: 3px solid $color-blue;
   }
 }

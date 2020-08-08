@@ -1,5 +1,10 @@
+@import "core/variables";
+@import "core/mixins";
+@import "core/reset";
+@import "core/functions";
+
 * {
-  font-family: 'Patrick Hand SC', cursive;
+  font-family: $main-font;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -11,7 +16,6 @@ li {
 }
 
 body {
-  // background-color: black;
   background-image: url('https://cdn.hipwallpaper.com/i/92/33/q2LRKO.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;

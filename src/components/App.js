@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../stylesheets/App.scss';
-import '../stylesheets/reset.scss';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetails from './CharacterDetails';
 import getApiData from '../services/api';
 import logo from  '../images/Rick_and_Morty.png';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -23,6 +22,19 @@ const App = () => {
     });
   }, []);
 
+  //Recoge la última búsqueda que se haya quedado pendiente en la página y actualiza el estado del el personaje buscado
+  useEffect(() => {
+    const newSearch = JSON.parse(localStorage.getItem('searchValue'));
+    if (newSearch) {
+        setSearch(newSearch)
+    }
+  }, []);
+
+  //almacena en el local el campo personaje buscado
+  useEffect(() => {
+    localStorage.setItem('searchValue', JSON.stringify(searchCharacter));
+  }, [searchCharacter]);
+
   const filterCharacters = () => {
     sortedCharacters();
     return characters.filter(character => {
@@ -37,9 +49,17 @@ const App = () => {
 
   const errorInfo = (
     <div>
-      <h4 className="errorText">No hay ningún personaje que coincida con la búsqueda<span className="errorText__word">"{searchCharacter}"</span></h4>
+      <h4 className="errorText">No hay ningún personaje que coincida con la búsqueda
+        <span className="errorText__word">{searchCharacter}</span>
+
+      </h4>
       <div>
-        <iframe title="sad" src="https://giphy.com/embed/RH1IFq2GT0Oau8NRWX" width="200px" frameBorder="0" allowFullScreen></iframe>
+        <iframe title="sad" src="https://giphy.com/embed/RH1IFq2GT0Oau8NRWX" frameBorder="0"></iframe>
+      </div>
+      <div className="return_btn_container">
+      <Link to ="/" style={{ textDecoration: 'none', fontFamily:'inherit', color:'inherit' }}>
+        <span className="return_btn">Return</span>
+      </Link>
       </div>
     </div>
   )
