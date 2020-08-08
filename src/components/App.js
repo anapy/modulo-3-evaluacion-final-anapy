@@ -11,7 +11,6 @@ import { Route, Switch } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
-
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
   }
@@ -33,7 +32,6 @@ const App = () => {
   //almacena en el local el campo personaje buscado
   useEffect(() => {
     localStorage.setItem('searchValue', JSON.stringify(searchCharacter));
-    console.log('searchValue');
   }, [searchCharacter]);
 
   const filterCharacters = () => {
