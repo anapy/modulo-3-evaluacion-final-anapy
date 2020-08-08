@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import '../stylesheets/characterDetails.scss';
 import PropTypes from 'prop-types';
@@ -9,27 +9,6 @@ import human from  '../images/human.svg';
 import rocket from  '../images/rocket.svg';
 
 const CharacterDetails = props => {
-  console.log(props);
-    const indexUp = () => {
-    let index = 0;
-    if(parseInt(props.charIndex) + 1 < props.characters.length) {
-      index = props.charIndex + 1;
-    } else if (props.charIndex >= props.characters.length) {
-      index = 0;
-    }
-    return index;
-  }
-
-  const indexDown = () => {
-    let index = 0;
-    if(props.charIndex !== 0) {
-      index = props.charIndex - 1;
-    } else if ((props.charIndex === 0)){
-      index =  props.characters.length - 1;
-    }
-    return index;
-  }
-
   return (
     <div className="detail__container">
       <article className="character__detail">

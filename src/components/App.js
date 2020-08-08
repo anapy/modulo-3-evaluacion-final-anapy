@@ -69,16 +69,16 @@ const App = () => {
         return name === routeCharacterName;
       })
       if(characterClicked) {
-        const indexClicked = characters.findIndex(character => character.name === characterClicked.name);
+        const indexClicked = filterCharacters().findIndex(character => character.name === characterClicked.name);
         let previousCharacter = undefined;
         let nextCharacter = undefined;
         if(indexClicked === 0) {
-          nextCharacter = characters[indexClicked + 1].name;
-        } else if(indexClicked === characters.length - 1) {
-          previousCharacter = characters[indexClicked - 1].name;
+          nextCharacter = filterCharacters()[indexClicked + 1].name;
+        } else if(indexClicked === filterCharacters().length - 1) {
+          previousCharacter = filterCharacters()[indexClicked - 1].name;
         } else {
-          previousCharacter = characters[indexClicked - 1].name;
-          nextCharacter =  characters[indexClicked + 1].name;
+          previousCharacter = filterCharacters()[indexClicked - 1].name;
+          nextCharacter =  filterCharacters()[indexClicked + 1].name;
         }
         return (
         <CharacterDetails className="character"
@@ -105,7 +105,6 @@ const App = () => {
     }
   }
 
-  console.log(charIndex)
   return (
     <div>
       <header>
