@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import '../stylesheets/characterDetails.scss';
 import PropTypes from 'prop-types';
 import alive from  '../images/alive.svg';
@@ -10,11 +10,7 @@ import rocket from  '../images/rocket.svg';
 
 const CharacterDetails = props => {
   console.log(props);
-  const handleClick = ev => {
-    console.log(ev.currentTarget);
-  }
-
-  const indexUp = () => {
+    const indexUp = () => {
     let index = 0;
     if(parseInt(props.charIndex) + 1 < props.characters.length) {
       index = props.charIndex + 1;
@@ -33,7 +29,7 @@ const CharacterDetails = props => {
     }
     return index;
   }
-  
+
   return (
     <div className="detail__container">
       <article className="character__detail">
@@ -42,13 +38,13 @@ const CharacterDetails = props => {
             <span className="return_btn">Return</span>
             </Link>
           </div>
-          <div className="images_container">
-            <Link to={`${props.characters[indexDown()].name.toLowerCase().replace(' ', '')}`} >
-              <img src={rocket} alt="rocket" height="60px" className="rocket_left" onClick={handleClick}/>
+          <div className="images_container"   >
+            <Link to={`${props.previousCharacter}`} >
+              <img src={rocket} alt="rocket" height="60px" className={`rocket_left  ${props.previousCharacter === undefined ? 'hidden' : ''}`} />
               </Link>
             <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
-            <Link to={`${props.characters[indexUp()].name.toLowerCase().replace(' ', '')}`} >
-            <img src={rocket} alt="rocket" height="60px" className="rocket_right"/>
+            <Link to={`${props.nextCharacter}`} >
+            <img src={rocket} alt="rocket" height="60px" className={`rocket_right  ${props.nextCharacter === undefined ? 'hidden' : ''}`}/>
             </Link>
           </div>
           <h3 className="detail_data character__detail__name">{props.name}</h3>

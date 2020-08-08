@@ -54,9 +54,11 @@ const App = () => {
     setCharIndex(namesList.findIndex(isSame));
   }
 
-  const updateIndex = number => {
-    console.log('updating')
-    setCharIndex(number);
+  const fixName = name => {
+    if(name !== undefined) {
+      name = name.toLowerCase().replace(' ', '');
+    }
+    return name;
   }
 
   const renderDetailsClick = props => {
@@ -64,12 +66,23 @@ const App = () => {
       const characterClicked = characters.find(character => {
         const routeCharacterName = props.match.params.characterName;
         const name = character.name.toLowerCase().replace(' ', '');
-        return name.includes(routeCharacterName);
+        return name === routeCharacterName;
       })
       if(characterClicked) {
+        const indexClicked = characters.findIndex(character => character.name === characterClicked.name);
+        let previousCharacter = undefined;
+        let nextCharacter = undefined;
+        if(indexClicked === 0) {
+          nextCharacter = characters[indexClicked + 1].name;
+        } else if(indexClicked === characters.length - 1) {
+          previousCharacter = characters[indexClicked - 1].name;
+        } else {
+          previousCharacter = characters[indexClicked - 1].name;
+          nextCharacter =  characters[indexClicked + 1].name;
+        }
         return (
         <CharacterDetails className="character"
-          key={characterClicked.id}
+          id={characterClicked.id}
           imgURL={characterClicked.image}
           name={characterClicked.name}
           alien={characterClicked.species === 'Alien' ? true : false}
@@ -78,7 +91,8 @@ const App = () => {
           status={characterClicked.status === 'Alive' ? true : false}
           characters={filterCharacters()}
           charIndex={charIndex}
-          updateIndex={updateIndex}
+          previousCharacter={fixName(previousCharacter)}
+          nextCharacter={fixName(nextCharacter)}
           />
         );
       } else {
