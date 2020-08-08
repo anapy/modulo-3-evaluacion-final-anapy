@@ -1,30 +1,38 @@
-* {
-  box-sizing: border-box;
-}
+@import "core/variables";
+@import "core/mixins";
+@import "core/functions";
+
 
 .detail__container {
   display: flex;
   justify-content: center;
 }
 .character__detail {
-  background-color: rgba(77, 167, 170, 0.7);
-  border: 3px solid lightgreen;
+  background-color: $color-dark-blue;
+  border: 3px solid $color-green;
   border-radius: 20px;
   width: 700px;
   padding: 20px;
   position: relative;
-  font-size: 20px;
+  font-size: rem(20);
   .return_btn {
-    border: 2px solid lightgreen;
+    border: 2px solid $color-green;
     padding: 5px;
     border-radius: 20px;
+  }
+  .return_btn:hover {
+    background-color: $color-green;
+    color: $color-dark;
   }
   .return_btn_container {
     position: absolute;
     padding: 5px;
     margin: 15px;
-    right: 20px;
     top: 0;
+    right: -15px;
+    @include tablet {
+      right: 20px;
+    }
   }
   &__icon {
     transform: translate(10px, 10px);
@@ -36,7 +44,7 @@
 }
 
 .fa-times {
-  color: black;
+  color: $color-dark;
 }
 
 
@@ -46,8 +54,16 @@
   align-items: center;
   .rocket_left {
     transform: rotate(225deg);
+    height: 40px;
+    @include tablet {
+      height: 60px
+    }
   }
   .rocket_right {
     transform: rotate(45deg);
+    height: 40px;
+    @include tablet {
+      height: 60px
+    }
   }
 }

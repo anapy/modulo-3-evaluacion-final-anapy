@@ -1,7 +1,11 @@
+@import "core/variables";
+@import "core/mixins";
+@import "core/functions";
+
 input {
-  background-color: black;
-  color: lightgreen;
+  background-color: $color-dark;
+  color: $color-green;
   padding: 5px 10px;
-  font-size: 20px;
-  border-color: lightgreen;
+  font-size: rem(20);
+  border-color: $color-green;
 }

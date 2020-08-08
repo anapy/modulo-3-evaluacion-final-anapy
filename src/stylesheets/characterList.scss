@@ -1,3 +1,7 @@
+@import "core/variables";
+@import "core/mixins";
+@import "core/functions";
+
 .characterList {
   margin: 50px;
   display: flex;
@@ -6,11 +10,11 @@
 }
 
 .errorText {
-  color: lightgreen;
+  color: $color-green;
   padding: 5px 10px;
-  font-size: 40px;
-  background-color: rgba(77, 167, 170, 0.7);
+  font-size: rem(40);
+  background-color: $color-dark-blue;
   &__word {
-    color: black;
+    color: $color-dark;
   }
 }

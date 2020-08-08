@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../stylesheets/App.scss';
-import '../stylesheets/reset.scss';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import CharacterDetails from './CharacterDetails';
