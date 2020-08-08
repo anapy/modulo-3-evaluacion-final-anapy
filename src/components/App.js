@@ -8,7 +8,6 @@ import getApiData from '../services/api';
 import logo from  '../images/Rick_and_Morty.png';
 import { Route, Switch } from 'react-router-dom';
 
-
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter , setSearch] = useState('');
@@ -22,6 +21,20 @@ const App = () => {
       setCharacters(data);
     });
   }, []);
+
+  //Recoge la última búsqueda que se haya quedado pendiente en la página y actualiza el estado del el personaje buscado
+  useEffect(() => {
+    const newSearch = JSON.parse(localStorage.getItem('searchValue'));
+    if (newSearch) {
+        setSearch(newSearch)
+    }
+  }, []);
+
+  //almacena en el local el campo personaje buscado
+  useEffect(() => {
+    localStorage.setItem('searchValue', JSON.stringify(searchCharacter));
+    console.log('searchValue');
+  }, [searchCharacter]);
 
   const filterCharacters = () => {
     sortedCharacters();
