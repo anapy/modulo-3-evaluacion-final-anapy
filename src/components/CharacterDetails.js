@@ -19,7 +19,7 @@ const CharacterDetails = props => {
     console.log(props.characters.length);
     if((props.charIndex !== 0) && (props.charIndex!== props.characters.length)) {
       return props.charIndex;
-    } else if () {
+    // } else if () {
 
     }
     // props.characters[props.charIndex - 1].name.toLowerCase().replace(' ', '')
@@ -28,8 +28,9 @@ const CharacterDetails = props => {
   const indexDown = () => {
     if(props.charIndex !== 0) {
       return props.charIndex;
-    } else if {
-      
+    } else if ((props.charIndex === 0)){
+      console.log(props.characters.length);
+      return props.characters.length;
     }
   }
 
