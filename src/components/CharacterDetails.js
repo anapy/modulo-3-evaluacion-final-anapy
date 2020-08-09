@@ -11,6 +11,7 @@ import rocket from  '../images/rocket.svg';
 
 
 const CharacterDetails = props => {
+  //checks status and sends img URL
   const status = () => {
     let status = '';
     if(props.status === "Alive") {
@@ -23,30 +24,30 @@ const CharacterDetails = props => {
     return status;
   }
   return (
-    <div className="detail__container">
+    <div className="character__detail__container">
       <article className="character__detail">
-          <div className="return_btn_container">
+          <div className="return__btn__container">
             <Link to ="/" className="return_link" >
             <span className="return_btn">Return</span>
             </Link>
           </div>
           <div className="images_container"   >
             <Link to={`${props.previousCharacter}`} >
-              <img src={rocket} alt="rocket" height="60px" className={`rocket_left  ${props.previousCharacter === undefined ? 'hidden' : ''}`} />
+              <img src={rocket} alt="rocketLeft" height="60px" className={`rocket_left  ${props.previousCharacter === undefined ? 'hidden' : ''}`} />
               </Link>
             <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
             <Link to={`${props.nextCharacter}`} >
-            <img src={rocket} alt="rocket" height="60px" className={`rocket_right  ${props.nextCharacter === undefined ? 'hidden' : ''}`}/>
+            <img src={rocket} alt="rocketRight" height="60px" className={`rocket_right  ${props.nextCharacter === undefined ? 'hidden' : ''}`}/>
             </Link>
           </div>
-          <h3 className="detail_data character__detail__name">{props.name}</h3>
-          <p className="detail_data character__detail__planet"><b>Planet</b>: {props.planet}</p>
-          <p className="detail_data character__detail__episodes"><b>Episodes</b>: {props.episodes} </p>
-          <p className="detail_data character__detail__species"><b>Specie:</b>
-            <img className="character__detail__icon" src={`${props.alien ? alien : human }`} alt="status icon" height="30px"/>
+          <h3 className="character__detail_data name">{props.name}</h3>
+          <p className="character__detail_data planet"><b>Planet</b>: {props.planet}</p>
+          <p className="character__detail_data episodes"><b>Episodes</b>: {props.episodes} </p>
+          <p className="character__detail_data species"><b>Specie:</b>
+            <img className="character__detail__icon" src={`${props.alien ? alien : human }`} alt="specie icon" height="30px"/>
           </p>
-          <p className="detail_data character__detail__status"><b>Status:</b>
-            <img className="character__detail__icon" src={`${status()}`} alt="status icon" height="30px"/>
+          <p className="character__detail_data character__detail__status"><b>Status:</b>
+            <img className="character__detail__icon" src={status()} alt="status icon" height="30px"/>
           </p>
       </article>
     </div>

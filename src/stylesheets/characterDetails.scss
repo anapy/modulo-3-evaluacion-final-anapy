@@ -2,8 +2,7 @@
 @import "core/mixins";
 @import "core/functions";
 
-
-.detail__container {
+.character__detail__container {
   display: flex;
   justify-content: center;
 }
@@ -18,18 +17,7 @@
   @include tablet {
     font-size: rem(24);
   }
-  .return_btn {
-    border: 2px solid $color-green;
-    padding: 5px;
-    border-radius: 20px;
-  }
-  .return_btn:hover {
-    background-color: $color-blue;
-    color: $color-light;
-    border: 2px solid $color-blue;
-
-  }
-  .return_btn_container {
+  .return__btn__container {
     position: absolute;
     padding: 5px;
     margin: 15px;
@@ -39,17 +27,22 @@
       right: 20px;
     }
   }
+  .return__btn {
+    border: 2px solid $color-green;
+    padding: 5px;
+    border-radius: 20px;
+  }
+  .return__btn:hover {
+    background-color: $color-blue;
+    color: $color-light;
+    border: 2px solid $color-blue;
+  }
   &__icon {
     transform: translate(10px, 10px);
   }
-}
-
-.detail_data {
-  padding: 5px;
-}
-
-.fa-times {
-  color: $color-dark;
+  .character__detail_data {
+    padding: 5px;
+  }
 }
 
 .images_container {
