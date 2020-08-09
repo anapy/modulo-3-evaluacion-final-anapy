@@ -1,7 +1,7 @@
 import React from 'react';
-import '../stylesheets/error.scss';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../stylesheets/error.scss';
 
 const Error = props => {
   return (
