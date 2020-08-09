@@ -19,7 +19,6 @@ const App = () => {
 
   useEffect(() => {
     getApiData().then(data => {
-      console.log(data)
       setCharacters(data);
     });
   }, []);
@@ -103,7 +102,10 @@ const App = () => {
         const indexClicked = filterCharacters().findIndex(character => character.name === characterClicked.name);
         let previousCharacter = undefined;
         let nextCharacter = undefined;
-        if(indexClicked === 0) {
+        if(indexClicked === 0 && indexClicked === filterCharacters().length -1) {
+          previousCharacter = undefined;
+          nextCharacter = undefined;
+        } else if(indexClicked === 0) {
           nextCharacter = filterCharacters()[indexClicked + 1].name;
         } else if(indexClicked === filterCharacters().length - 1) {
           previousCharacter = filterCharacters()[indexClicked - 1].name;
@@ -119,7 +121,7 @@ const App = () => {
           alien={characterClicked.species === 'Alien' ? true : false}
           planet={characterClicked.origin.name}
           episodes={characterClicked.episode.length}
-          status={characterClicked.status === 'Alive' ? true : false}
+          status={characterClicked.status}
           characters={filterCharacters()}
           previousCharacter={fixName(previousCharacter)}
           nextCharacter={fixName(nextCharacter)}

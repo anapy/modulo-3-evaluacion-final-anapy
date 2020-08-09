@@ -33,7 +33,6 @@ const Filters = props => {
       <label htmlFor="characterSearh">
         <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler}></input>
       </label>
-      <button className="reset_btn" onClick={handleReset}>Reset search</button>
       <label for="species">
         <select id="species" name="species" value={props.species} onChange={handleSpecies}>
           <option value="" disabled selected hidden>Species</option>
@@ -46,8 +45,10 @@ const Filters = props => {
           <option value="" disabled selected hidden>Status</option>
           <option value="alive">Alive</option>
           <option value="dead">Dead</option>
+          <option value="unknown">Unknown</option>
         </select>
       </label>
+      <button className="reset_btn" onClick={handleReset}>Reset search</button>
     </form>
   </div>
   );
