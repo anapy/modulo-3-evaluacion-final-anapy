@@ -54,12 +54,12 @@ const CharacterDetails = props => {
   )
 }
 CharacterDetails.propTypes = {
-  name: PropTypes.string,
-  imgURL: PropTypes.string,
-  human: PropTypes.bool,
-  planet: PropTypes.string,
-  episodes: PropTypes.number,
-  status: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  imgURL: PropTypes.string.isRequired,
+  human: PropTypes.bool.isRequired,
+  planet: PropTypes.string.isRequired,
+  episodes: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired,
 }
 
 export default CharacterDetails;

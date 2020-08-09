@@ -21,9 +21,9 @@ const CharacterCard = props => {
 }
 
 CharacterCard.propTypes = {
-  name: PropTypes.string,
-  imgURL: PropTypes.string,
-  species: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  imgURL: PropTypes.string.isRequired,
+  species: PropTypes.string.isRequired,
 }
 
 export default CharacterCard;
