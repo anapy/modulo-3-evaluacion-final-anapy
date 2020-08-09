@@ -9,5 +9,12 @@
     width: 180px;
     background-color: $color-blue;
     border: 3px solid $color-blue;
+    box-shadow: 3px 5px $color-dark-blue;
+  }
+  &__container:hover {
+    border-color: $color-green;
+    color: $color-dark;
+    background-color: $color-green;
+    box-shadow: 3px 5px $color-dark-green;
   }
 }

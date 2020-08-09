@@ -13,7 +13,7 @@ const CharacterDetails = props => {
     <div className="detail__container">
       <article className="character__detail">
           <div className="return_btn_container">
-            <Link to ="/" style={{ textDecoration: 'none', fontFamily:'inherit', color:'inherit' }}>
+            <Link to ="/" className="return_link" >
             <span className="return_btn">Return</span>
             </Link>
           </div>

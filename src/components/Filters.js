@@ -8,12 +8,17 @@ const Filters = props => {
     props.handleSearch(searchCharacter);
   }
 
-  function inputEnterHandler(ev) {
+  const inputEnterHandler = (ev) => {
     let keyCode = ev.keyCode;
     if (keyCode === 13) {
       ev.preventDefault();
     }
   }
+
+  const handleReset = ev => {
+    ev.preventDefault();
+    props.handleReset();
+  } 
 
   return (
   <div>
@@ -21,7 +26,21 @@ const Filters = props => {
       <label htmlFor="characterSearh">
         <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler}></input>
       </label>
-
+      <button className="reset_btn" onClick={handleReset}>Reset search</button>
+      <label for="species">
+        <select id="species" name="species">
+          <option value="" disabled selected hidden>Species</option>
+          <option value="alien">Alien</option>
+          <option value="human">Human</option>
+        </select>
+      </label>
+      <label for="status">
+        <select id="status" name="status">
+          <option value="" disabled selected hidden>Status</option>
+          <option value="alien">Alive</option>
+          <option value="human">Dead</option>
+        </select>
+      </label>
     </form>
   </div>
   );

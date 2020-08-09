@@ -61,16 +61,22 @@
     transform: rotate(225deg);
     height: 40px;
     @include tablet {
-      height: 60px
+      height: 60px;
     }
   }
   .rocket_right {
     transform: rotate(45deg);
     height: 40px;
     @include tablet {
-      height: 60px
+      height: 60px;
     }
   }
+}
+
+.return_link {
+  text-decoration: none;
+  font-family:'inherit';
+  color:'inherit';
 }
 
 .hidden {

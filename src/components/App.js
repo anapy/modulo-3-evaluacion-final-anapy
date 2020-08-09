@@ -70,6 +70,10 @@ const App = () => {
     return name;
   }
 
+  const handleReset = () => {
+    setSearch('');
+  }
+
   const renderDetailsClick = props => {
     if(props.match.params) {
       const characterClicked = characters.find(character => {
@@ -121,7 +125,7 @@ const App = () => {
       <main className="App">
         <Switch>
           <Route exact path="/">
-            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter} />
+            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter} handleReset={handleReset}/>
             <CharacterList 
             characters={filterCharacters()}
             searchCharacter={searchCharacter}
