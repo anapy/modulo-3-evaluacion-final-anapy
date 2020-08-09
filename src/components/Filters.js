@@ -29,18 +29,18 @@ const Filters = props => {
 
   return (
   <div>
-    <form>
-      <label htmlFor="characterSearh">
-        <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler}></input>
+    <form className="character__form">
+      <label htmlFor="characterSearh" className="character__form__fields">
+        <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler} className="character__form__text"></input>
       </label>
-      <label htmlFor="species">
+      <label htmlFor="species" className="character__form__fields">
         <select id="species" name="species" value={props.species} onChange={handleSpecies}>
           <option value="" disabled defaultValue hidden>Species</option>
           <option value="alien">Alien</option>
           <option value="human">Human</option>
         </select>
       </label>
-      <label htmlFor="status">
+      <label htmlFor="status" className="character__form__fields">
         <select id="status" name="status" value={props.status} onChange={handleStatus}>
           <option value="" disabled defaultValue hidden>Status</option>
           <option value="alive">Alive</option>
@@ -48,7 +48,7 @@ const Filters = props => {
           <option value="unknown">Unknown</option>
         </select>
       </label>
-      <button className="reset_btn" onClick={handleReset}>Reset search</button>
+      <button className="character__form__reset_btn" onClick={handleReset}>Reset search</button>
     </form>
   </div>
   );

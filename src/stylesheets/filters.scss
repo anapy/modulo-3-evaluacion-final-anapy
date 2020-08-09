@@ -2,25 +2,23 @@
 @import "core/mixins";
 @import "core/functions";
 
-input {
-  background-color: $color-dark;
-  color: $color-green;
-  padding: 5px 10px;
+.character__form {
   font-size: rem(20);
-  border-color: $color-green;
+  &__text {
+    background-color: $color-dark;
+    color: $color-green;
+    padding: 5px 10px;
+    border-color: $color-green;
+    margin-right: 5px;
+  }
+  &__fields {
+    font-size: rem(20);
+    margin-right: 5px;
+  }
+  &__reset_btn {
+    font-size: rem(20);
+    padding: 4px;
+    background-color: $color-green;
+  }
 }
 
-select {
-  font-size: rem(20);
-  margin-left: 5px;
-  padding: 2px;
-
-}
-
-.reset_btn {
-  font-size: rem(20);
-  margin-left: 5px;
-  padding: 4px;
-  background-color: $color-green;
-
-}
