@@ -13,10 +13,7 @@ const CharacterList = props => {
         imgURL={character.image}
         name={character.name}
         species={character.species}
-        renderDetailsClick={props.renderDetailsClick}
-        errorInfo={props.errorInfo}
-        searchNewIndex={props.searchNewIndex}
-        />
+        renderDetailsClick={props.renderDetailsClick} />
       </li>
     )
   })

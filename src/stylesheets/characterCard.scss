@@ -2,7 +2,7 @@
 @import "core/mixins";
 @import "core/functions";
 
-.character {
+.character__card {
   &__container {
     margin: 20px;
     width: 180px;
@@ -16,10 +16,10 @@
     background-color: $color-green;
     box-shadow: 3px 5px $color-dark-green;
   }
-}
 
-.details_link {
-  text-decoration: none;
-  font-family: inherit;
-  color: inherit;
+  &__link {
+      text-decoration: none;
+      font-family: inherit;
+      color: inherit;
+  }
 }
