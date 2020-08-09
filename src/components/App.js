@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import '../stylesheets/App.scss';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
+import Error from './Error';
 import CharacterDetails from './CharacterDetails';
 import getApiData from '../services/api';
 import logo from  '../images/Rick_and_Morty.png';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -54,22 +55,6 @@ const App = () => {
   const sortedCharacters = () => {
     characters.sort((a, b) => (a.name > b.name) ? 1 : -1);
   }
-
-  const errorInfo = (
-    <div>
-      <h4 className="errorText">There is no character matching your search
-        <span className="errorText__word">{searchCharacter}</span>
-      </h4>
-      <div>
-        <iframe title="sad" src="https://giphy.com/embed/RH1IFq2GT0Oau8NRWX" frameBorder="0"></iframe>
-      </div>
-      <div className="return_btn_container">
-      <Link to ="/" style={{ textDecoration: 'none', fontFamily:'inherit', color:'inherit' }}>
-        <span className="return_btn">Return</span>
-      </Link>
-      </div>
-    </div>
-  )
 
   const fixName = name => {
     if(name !== undefined) {
@@ -130,7 +115,7 @@ const App = () => {
       } else {
         return (
           <div>
-            {errorInfo}
+            <Error searchCharacter={searchCharacter}/>
           </div>
         )
       }
@@ -155,7 +140,6 @@ const App = () => {
             characters={filterCharacters()}
             searchCharacter={searchCharacter}
             renderDetailsClick={renderDetailsClick}
-            errorInfo={errorInfo}
             />
           </Route>
           <Route path="/details/:characterName" render={renderDetailsClick}  />
