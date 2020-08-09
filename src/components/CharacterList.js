@@ -13,13 +13,14 @@ const CharacterList = props => {
         imgURL={character.image}
         name={character.name}
         species={character.species}
-        renderDetailsClick={props.renderDetailsClick} />
+        renderDetailsClick={props.renderDetailsClick}
+        />
       </li>
     )
   })
 
   const errorInfo = (
-    <Error searchCharacter={props.searchCharacter}/>
+    <Error searchCharacter={props.searchCharacter} handleReset={props.handleReset}/>
   )
 
   return (

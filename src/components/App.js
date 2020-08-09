@@ -126,7 +126,7 @@ const App = () => {
       } else {
         return (
           <div>
-            <Error searchCharacter={searchCharacter}/>
+            <Error searchCharacter={searchCharacter} />
           </div>
         )
       }
@@ -152,6 +152,7 @@ const App = () => {
             characters={filterCharacters()}
             searchCharacter={searchCharacter}
             renderDetailsClick={renderDetailsClick}
+            handleReset={handleReset}
             />
           </Route>
           <Route path="/details/:characterName" render={renderDetailsClick}  />

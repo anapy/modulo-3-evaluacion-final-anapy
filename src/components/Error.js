@@ -13,10 +13,10 @@ const Error = props => {
       <div>
         <img src="https://media1.tenor.com/images/e620a0fbd908b1427448972e843f8b00/tenor.gif?itemid=9603354" alt="sad_gif"></img>
       </div>
-      <div className="return_btn_container">
-      <Link to ="/" className="return_btn">
-        <span >Return</span>
-      </Link>
+      <div className={`return_btn_container ${props.searchCharacter !== '' ? 'hidden' : ''}`}>
+        <Link to ="/" className="return_btn">
+          <span >Return</span>
+        </Link>
       </div>
     </div>
   )
