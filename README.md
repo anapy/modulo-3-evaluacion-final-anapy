@@ -19,6 +19,8 @@ El listado contiene los siguientes componentes:
   - Componente para el listado (CharacterList.js)
   - Componente para la tarjeta de cada personaje del listado (CharacterCard.js)
   - Componente para el detalle de cada personaje (CharacterDetails.js)
+  - Componente para el mensaje de error (Error.js)
+  - Componente principal (App.js)
 
 4. Detalle de personajes
 Al hacer clic sobre la imagen de la tarjeta de un personaje, su información
