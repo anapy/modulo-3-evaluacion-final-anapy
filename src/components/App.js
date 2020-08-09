@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../stylesheets/App.scss';
+import { Route, Switch} from 'react-router-dom';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import Error from './Error';
 import CharacterDetails from './CharacterDetails';
 import getApiData from '../services/api';
 import logo from  '../images/Rick_and_Morty.png';
-import { Route, Switch} from 'react-router-dom';
+import '../stylesheets/App.scss';
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -14,6 +14,7 @@ const App = () => {
   const [species, setSpecies] = useState('');
   const [status, setStatus] = useState('');
 
+  //Receives the searched item and saves it on state
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
   }
@@ -24,7 +25,12 @@ const App = () => {
     });
   }, []);
 
-  //Recoge la última búsqueda que se haya quedado pendiente en la página y actualiza el estado del el personaje buscado
+  //Saves in local the searchCharacter
+  useEffect(() => {
+    localStorage.setItem('searchValue', JSON.stringify(searchCharacter));
+  }, [searchCharacter]);
+
+  //Pick the last search saved on localStorage and updates the searchCharacter
   useEffect(() => {
     const newSearch = JSON.parse(localStorage.getItem('searchValue'));
     if (newSearch) {
@@ -32,11 +38,7 @@ const App = () => {
     }
   }, []);
 
-  //almacena en el local el campo personaje buscado
-  useEffect(() => {
-    localStorage.setItem('searchValue', JSON.stringify(searchCharacter));
-  }, [searchCharacter]);
-
+//Filters the characters by name, status and species
   const filterCharacters = () => {
     sortedCharacters();
     return characters
@@ -52,10 +54,12 @@ const App = () => {
     })
   }
 
+  //Sort characters in alphabetical order
   const sortedCharacters = () => {
     characters.sort((a, b) => (a.name > b.name) ? 1 : -1);
   }
 
+  //Clean from spaces the string and transform it to lower case
   const fixName = name => {
     if(name !== undefined) {
       name = name.toLowerCase().replace(' ', '');
@@ -63,26 +67,33 @@ const App = () => {
     return name;
   }
 
+  //Reset all filters to empty status
   const handleReset = () => {
     setSearch('');
     setSpecies('');
     setStatus('');
   }
 
+  //Set species with given species
   const handleSpecies = specie => {
     setSpecies(specie);
   }
+
+  //Set status with given status
   const handleStatus = status => {
     setStatus(status);
   }
 
+  //Sends the information to detailsClickComponent depending the character clicked
   const renderDetailsClick = props => {
+    //First checks is there's a parameter and return the matching characters
     if(props.match.params) {
       const characterClicked = characters.find(character => {
         const routeCharacterName = props.match.params.characterName;
-        const name = character.name.toLowerCase().replace(' ', '');
+        const name = fixName(character.name);
         return name === routeCharacterName;
       })
+      //Generates previous and next characters for surfing
       if(characterClicked) {
         const indexClicked = filterCharacters().findIndex(character => character.name === characterClicked.name);
         let previousCharacter = undefined;
@@ -121,6 +132,7 @@ const App = () => {
       }
     }
   }
+
   return (
     <div>
       <header>
