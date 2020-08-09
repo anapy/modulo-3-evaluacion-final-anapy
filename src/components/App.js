@@ -57,7 +57,7 @@ const App = () => {
 
   const errorInfo = (
     <div>
-      <h4 className="errorText">No hay ningún personaje que coincida con la búsqueda
+      <h4 className="errorText">There is no character matching your search
         <span className="errorText__word">{searchCharacter}</span>
       </h4>
       <div>
