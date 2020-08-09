@@ -33,16 +33,16 @@ const Filters = props => {
       <label htmlFor="characterSearh">
         <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler}></input>
       </label>
-      <label for="species">
+      <label htmlFor="species">
         <select id="species" name="species" value={props.species} onChange={handleSpecies}>
-          <option value="" disabled selected hidden>Species</option>
+          <option value="" disabled defaultValue hidden>Species</option>
           <option value="alien">Alien</option>
           <option value="human">Human</option>
         </select>
       </label>
-      <label for="status">
+      <label htmlFor="status">
         <select id="status" name="status" value={props.status} onChange={handleStatus}>
-          <option value="" disabled selected hidden>Status</option>
+          <option value="" disabled defaultValue hidden>Status</option>
           <option value="alive">Alive</option>
           <option value="dead">Dead</option>
           <option value="unknown">Unknown</option>

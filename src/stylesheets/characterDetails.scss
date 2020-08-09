@@ -54,9 +54,13 @@
 
 
 .images_container {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+  justify-content: center;
+  @include tablet {
+    gap: 104px;
+  }
   .rocket_left {
     transform: rotate(225deg);
     height: 40px;
