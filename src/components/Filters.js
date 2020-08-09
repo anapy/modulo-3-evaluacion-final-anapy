@@ -18,7 +18,14 @@ const Filters = props => {
   const handleReset = ev => {
     ev.preventDefault();
     props.handleReset();
-  } 
+  }
+
+  const handleSpecies = ev => {
+    props.handleSpecies(ev.currentTarget.value);
+  }
+  const handleStatus = ev => {
+    props.handleStatus(ev.currentTarget.value);
+  }
 
   return (
   <div>
@@ -28,17 +35,17 @@ const Filters = props => {
       </label>
       <button className="reset_btn" onClick={handleReset}>Reset search</button>
       <label for="species">
-        <select id="species" name="species">
+        <select id="species" name="species" value={props.species} onChange={handleSpecies}>
           <option value="" disabled selected hidden>Species</option>
           <option value="alien">Alien</option>
           <option value="human">Human</option>
         </select>
       </label>
       <label for="status">
-        <select id="status" name="status">
+        <select id="status" name="status" value={props.status} onChange={handleStatus}>
           <option value="" disabled selected hidden>Status</option>
-          <option value="alien">Alive</option>
-          <option value="human">Dead</option>
+          <option value="alive">Alive</option>
+          <option value="dead">Dead</option>
         </select>
       </label>
     </form>

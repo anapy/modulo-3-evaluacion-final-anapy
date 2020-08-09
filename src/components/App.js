@@ -10,6 +10,8 @@ import { Route, Switch, Link } from 'react-router-dom';
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [searchCharacter, setSearch] = useState('');
+  const [species, setSpecies] = useState('');
+  const [status, setStatus] = useState('');
 
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
@@ -17,6 +19,7 @@ const App = () => {
 
   useEffect(() => {
     getApiData().then(data => {
+      console.log(data)
       setCharacters(data);
     });
   }, []);
@@ -36,9 +39,16 @@ const App = () => {
 
   const filterCharacters = () => {
     sortedCharacters();
-    return characters.filter(character => {
+    return characters
+    .filter(character => {
       const name = character.name.toLowerCase();
       return name.includes(searchCharacter);
+    })
+    .filter(character => {
+      return character.status.toLowerCase().includes(status);
+    })
+    .filter(character => {
+      return character.species.toLowerCase().includes(species);
     })
   }
 
@@ -50,7 +60,6 @@ const App = () => {
     <div>
       <h4 className="errorText">No hay ningún personaje que coincida con la búsqueda
         <span className="errorText__word">{searchCharacter}</span>
-
       </h4>
       <div>
         <iframe title="sad" src="https://giphy.com/embed/RH1IFq2GT0Oau8NRWX" frameBorder="0"></iframe>
@@ -72,6 +81,15 @@ const App = () => {
 
   const handleReset = () => {
     setSearch('');
+    setSpecies('');
+    setStatus('');
+  }
+
+  const handleSpecies = specie => {
+    setSpecies(specie);
+  }
+  const handleStatus = status => {
+    setStatus(status);
   }
 
   const renderDetailsClick = props => {
@@ -116,7 +134,6 @@ const App = () => {
       }
     }
   }
-
   return (
     <div>
       <header>
@@ -125,8 +142,14 @@ const App = () => {
       <main className="App">
         <Switch>
           <Route exact path="/">
-            <Filters handleSearch={handleSearch} searchCharacter={searchCharacter} handleReset={handleReset}/>
-            <CharacterList 
+            <Filters handleSearch={handleSearch}
+            searchCharacter={searchCharacter}
+            handleReset={handleReset}
+            handleSpecies={handleSpecies}
+            handleStatus={handleStatus}
+            species={species}
+            status={status} />
+            <CharacterList
             characters={filterCharacters()}
             searchCharacter={searchCharacter}
             renderDetailsClick={renderDetailsClick}

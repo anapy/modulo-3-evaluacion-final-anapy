@@ -18,9 +18,9 @@ const CharacterCard = props => {
       </Link>
       <h3 className="character__name">{props.name}</h3>
       <p className="character__species">{props.species} </p>
-      <Link to={`/details/${props.name.toLowerCase().replace(' ', '')}`} className="details_link">
-        <p>click for more info</p>
-      </Link>
+      {/* <Link to={`/details/${props.name.toLowerCase().replace(' ', '')}`} className="details_link">
+        <p>More info...</p>
+      </Link> */}
     </article>
   );
 }
