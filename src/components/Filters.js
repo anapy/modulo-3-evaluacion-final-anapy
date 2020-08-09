@@ -8,6 +8,7 @@ const Filters = props => {
     props.handleSearch(searchCharacter);
   }
 
+  //Prevents to load page when enter is push
   const inputEnterHandler = (ev) => {
     let keyCode = ev.keyCode;
     if (keyCode === 13) {
@@ -15,14 +16,18 @@ const Filters = props => {
     }
   }
 
+  //Send reset instruction to App
   const handleReset = ev => {
     ev.preventDefault();
     props.handleReset();
   }
 
+  //Sends specie selected to App
   const handleSpecies = ev => {
     props.handleSpecies(ev.currentTarget.value);
   }
+
+  //Sends status selected to App
   const handleStatus = ev => {
     props.handleStatus(ev.currentTarget.value);
   }
