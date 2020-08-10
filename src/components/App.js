@@ -14,6 +14,13 @@ const App = () => {
   const [species, setSpecies] = useState('');
   const [status, setStatus] = useState('');
 
+  //Gets the data from API
+  useEffect(() => {
+    getApiData().then(data => {
+      setCharacters(data);
+    });
+  }, []);
+
   //Receives the searched item and saves it on state
   const handleSearch = (searchItem) => {
     setSearch(searchItem);
@@ -29,11 +36,6 @@ const App = () => {
     setStatus(status);
   }
 
-  useEffect(() => {
-    getApiData().then(data => {
-      setCharacters(data);
-    });
-  }, []);
 
   //Saves in local the searchCharacter
   useEffect(() => {
