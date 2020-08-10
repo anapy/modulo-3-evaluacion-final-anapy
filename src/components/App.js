@@ -19,6 +19,16 @@ const App = () => {
     setSearch(searchItem);
   }
 
+  //Set species with given species
+  const handleSpecies = specie => {
+    setSpecies(specie);
+  }
+  
+  //Set status with given status
+  const handleStatus = status => {
+    setStatus(status);
+  }
+
   useEffect(() => {
     getApiData().then(data => {
       setCharacters(data);
@@ -54,7 +64,7 @@ const App = () => {
     })
   }
 
-  //Sort characters in alphabetical order
+  //Sort characters by alphabetical order
   const sortedCharacters = () => {
     characters.sort((a, b) => (a.name > b.name) ? 1 : -1);
   }
@@ -74,15 +84,6 @@ const App = () => {
     setStatus('');
   }
 
-  //Set species with given species
-  const handleSpecies = specie => {
-    setSpecies(specie);
-  }
-
-  //Set status with given status
-  const handleStatus = status => {
-    setStatus(status);
-  }
 
   //Sends the information to detailsClickComponent depending the character clicked
   const renderDetailsClick = props => {

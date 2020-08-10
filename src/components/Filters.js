@@ -4,7 +4,7 @@ import '../stylesheets/filters.scss';
 const Filters = props => {
   const handleSearch = (ev) => {
     ev.preventDefault();
-    const searchCharacter = ev.currentTarget.value.toLowerCase()
+    const searchCharacter = ev.currentTarget.value.toLowerCase();
     props.handleSearch(searchCharacter);
   }
 
@@ -36,7 +36,7 @@ const Filters = props => {
   <div>
     <form className="character__form">
       <label htmlFor="characterSearh" className="character__form__fields">
-        <input placeholder="Search" id="characterSearh" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler} className="character__form__text"></input>
+        <input placeholder="Search" id="characterSearch" name="characterSearh" type="text" value={props.searchCharacter} onChange={handleSearch} onKeyDown={inputEnterHandler} className="character__form__text"></input>
       </label>
       <label htmlFor="species" className="character__form__fields">
         <select id="species" name="species" value={props.species} onChange={handleSpecies}>

@@ -56,7 +56,7 @@ const CharacterDetails = props => {
 CharacterDetails.propTypes = {
   name: PropTypes.string.isRequired,
   imgURL: PropTypes.string.isRequired,
-  human: PropTypes.bool.isRequired,
+  alien: PropTypes.bool.isRequired,
   planet: PropTypes.string.isRequired,
   episodes: PropTypes.number.isRequired,
   status: PropTypes.string.isRequired,
