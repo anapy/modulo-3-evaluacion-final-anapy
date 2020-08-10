@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../stylesheets/error.scss';
 
 const Error = props => {
-  const{ searchCharacter} = props;
+  const {searchCharacter} = props;
   return (
     <div>
       <h4 className="errorText">
