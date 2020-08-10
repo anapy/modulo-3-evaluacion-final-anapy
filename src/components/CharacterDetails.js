@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../stylesheets/characterDetails.scss';
 import PropTypes from 'prop-types';
 import alive from  '../images/alive.svg';
 import dead from  '../images/dead.svg';
@@ -8,6 +7,7 @@ import unknown from  '../images/unknown.svg';
 import alienIMG from  '../images/alien.svg';
 import human from  '../images/human.svg';
 import rocket from  '../images/rocket.svg';
+import '../stylesheets/characterDetails.scss';
 
 
 const CharacterDetails = props => {
