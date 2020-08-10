@@ -119,7 +119,6 @@ const App = () => {
           planet={characterClicked.origin.name}
           episodes={characterClicked.episode.length}
           status={characterClicked.status}
-          characters={filterCharacters()}
           previousCharacter={fixName(previousCharacter)}
           nextCharacter={fixName(nextCharacter)}
           />

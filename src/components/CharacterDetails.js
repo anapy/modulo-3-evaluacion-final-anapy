@@ -5,49 +5,51 @@ import PropTypes from 'prop-types';
 import alive from  '../images/alive.svg';
 import dead from  '../images/dead.svg';
 import unknown from  '../images/unknown.svg';
-import alien from  '../images/alien.svg';
+import alienIMG from  '../images/alien.svg';
 import human from  '../images/human.svg';
 import rocket from  '../images/rocket.svg';
 
 
 const CharacterDetails = props => {
+  const {id, imgURL, name, alien, planet, episodes, status, previousCharacter, nextCharacter} = props;
+
   //checks status and sends img URL
-  const status = () => {
-    let status = '';
-    if(props.status === "Alive") {
-      status = alive;
-    } else if (props.status === "Dead") {
-      status = dead;
+  const detailsStatus = () => {
+    let detailsStatus = '';
+    if(status === "Alive") {
+      detailsStatus = alive;
+    } else if (status === "Dead") {
+      detailsStatus = dead;
     } else {
       return unknown;
     }
-    return status;
+    return detailsStatus;
   }
   return (
     <div className="character__detail__container">
-      <article className="character__detail">
+      <article className={`character__detail ${id}`}>
           <div className="return__btn__container">
             <Link to ="/" className="return_link" >
             <span className="return_btn">Return</span>
             </Link>
           </div>
           <div className="images_container"   >
-            <Link to={`${props.previousCharacter}`} >
-              <img src={rocket} alt="rocketLeft" height="60px" className={`rocket_left  ${props.previousCharacter === undefined ? 'hidden' : ''}`} />
+            <Link to={`${previousCharacter}`} >
+              <img src={rocket} alt="rocketLeft" height="60px" className={`rocket_left  ${previousCharacter === undefined ? 'hidden' : ''}`} />
               </Link>
-            <img src={props.imgURL} className="character__img" alt={props.name} height="150px"/>
-            <Link to={`${props.nextCharacter}`} >
-            <img src={rocket} alt="rocketRight" height="60px" className={`rocket_right  ${props.nextCharacter === undefined ? 'hidden' : ''}`}/>
+            <img src={imgURL} className="character__img" alt={name} height="150px"/>
+            <Link to={`${nextCharacter}`} >
+            <img src={rocket} alt="rocketRight" height="60px" className={`rocket_right  ${nextCharacter === undefined ? 'hidden' : ''}`}/>
             </Link>
           </div>
-          <h3 className="character__detail_data name">{props.name}</h3>
-          <p className="character__detail_data planet"><b>Planet</b>: {props.planet}</p>
-          <p className="character__detail_data episodes"><b>Episodes</b>: {props.episodes} </p>
+          <h3 className="character__detail_data name">{name}</h3>
+          <p className="character__detail_data planet"><b>Planet</b>: {planet}</p>
+          <p className="character__detail_data episodes"><b>Episodes</b>: {episodes} </p>
           <p className="character__detail_data species"><b>Specie:</b>
-            <img className="character__detail__icon" src={`${props.alien ? alien : human }`} alt="specie icon" height="30px"/>
+            <img className="character__detail__icon" src={`${alien ? alienIMG : human }`} alt="specie icon" height="30px"/>
           </p>
           <p className="character__detail_data character__detail__status"><b>Status:</b>
-            <img className="character__detail__icon" src={status()} alt="status icon" height="30px"/>
+            <img className="character__detail__icon" src={detailsStatus()} alt="status icon" height="30px"/>
           </p>
       </article>
     </div>
