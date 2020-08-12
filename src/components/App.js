@@ -13,6 +13,7 @@ const App = () => {
   const [searchCharacter, setSearch] = useState('');
   const [species, setSpecies] = useState('');
   const [status, setStatus] = useState('');
+  const [femenine, setGender] = useState(false);
 
   //Gets the data from API
   useEffect(() => {
@@ -30,7 +31,7 @@ const App = () => {
   const handleSpecies = specie => {
     setSpecies(specie);
   }
-  
+
   //Set status with given status
   const handleStatus = status => {
     setStatus(status);
@@ -53,18 +54,28 @@ const App = () => {
 //Filters the characters by name, status and species
   const filterCharacters = () => {
     sortedCharacters();
-    return characters
-    .filter(character => {
-      const name = character.name.toLowerCase();
-      return name.includes(searchCharacter);
-    })
-    .filter(character => {
-      return character.status.toLowerCase().includes(status);
-    })
-    .filter(character => {
-      return character.species.toLowerCase().includes(species);
-    })
-  }
+    //genderFilter();
+    console.log(characters);
+      return characters
+      .filter(character => {
+        const name = character.name.toLowerCase();
+        return name.includes(searchCharacter);
+      })
+      .filter(character => {
+        return character.status.toLowerCase().includes(status);
+      })
+      .filter(character => {
+        return character.species.toLowerCase().includes(species);
+      })
+      .filter(character => {
+        if(femenine) {
+          return character.gender === "Female";
+        } else {
+          return character;
+        }
+      });
+    }
+
 
   //Sort characters by alphabetical order
   const sortedCharacters = () => {
@@ -84,6 +95,11 @@ const App = () => {
     setSearch('');
     setSpecies('');
     setStatus('');
+    setGender('');
+  }
+
+  const handleGender = checked => {
+      setGender(checked);
   }
 
 
@@ -149,7 +165,9 @@ const App = () => {
             handleSpecies={handleSpecies}
             handleStatus={handleStatus}
             species={species}
-            status={status} />
+            status={status} 
+            handleGender={handleGender}
+            femenine={femenine}/>
             <CharacterList
             characters={filterCharacters()}
             searchCharacter={searchCharacter}

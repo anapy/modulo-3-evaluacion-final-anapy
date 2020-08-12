@@ -32,6 +32,10 @@ const Filters = props => {
     props.handleStatus(ev.currentTarget.value);
   }
 
+  const handleGender = ev => {
+    props.handleGender(ev.target.checked);
+  }
+  console.log(props);
   return (
     <div>
       <form className="character__form">
@@ -52,6 +56,9 @@ const Filters = props => {
             <option value="dead">Dead</option>
             <option value="unknown">Unknown</option>
           </select>
+        </label>
+        <label>Femenine
+          <input id="gender" type="checkbox" name="gender" checked={props.femenine} onChange={handleGender}></input>
         </label>
         <button className="character__form__reset_btn" onClick={handleReset}>Reset search</button>
       </form>
